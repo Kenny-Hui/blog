@@ -1,0 +1,52 @@
+---
+interface Props {
+    hkd: number
+}
+
+const { hkd } = Astro.props;
+
+function round(hkd, ratio) {
+    return Math.round((hkd * ratio) * 10) / 10;
+}
+---
+<span class="tooltip-wrapper">
+    <slot />
+    <span class="tooltip">
+        {round(hkd, 0.13)} USD<br>
+        {round(hkd, 0.12)} EUR<br>
+        {round(hkd, 19.15)} JPY
+    </span>
+</span>
+    
+<style>
+    .tooltip-wrapper {
+        position: relative;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+    }
+
+    .tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: max-content;
+
+        background: rgb(var(--background));
+        border: 1px solid rgb(var(--text-color));
+        border-radius: var(--border-radius);
+        padding: 0.25rem;
+
+        visibility: hidden;
+        opacity: 0;
+        transform: scaleY(0.85);
+        transform-origin: bottom;
+        transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+    }
+
+    .tooltip-wrapper:hover > .tooltip {
+        visibility: visible;
+        opacity: 1;
+        transform: scaleY(1);
+    }
+</style>

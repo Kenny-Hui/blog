@@ -1,0 +1,151 @@
+:root {
+    --background: 30, 33, 43;
+    --border-radius: 6px;
+    --border-color: 0, 0, 0, 0.5;
+    --text-color: 200, 200, 200;
+
+}
+html {
+    font-family: system-ui, sans-serif;
+    background: rgb(var(--background));
+    scroll-behavior: smooth;
+}
+body {
+    width: 50em;
+    max-width: 100%;
+    margin: auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+main {
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.8rem;
+    color: rgb(var(--text-color));
+}
+h1 {
+    line-height: 1;
+}
+code {
+    font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+tr:nth-child(2n+1) {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+th {
+    text-align: left;
+}
+
+th, td {
+    padding: 0.25rem 0.5rem;
+}
+
+pre {
+    border: 1px solid rgba(var(--border-color));
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: var(--border-radius);
+    padding: 0.1rem 0.5rem;
+}
+
+li p {
+    margin: 0;
+}
+
+a[href] {
+    color: rgb(173, 164, 255);
+    text-decoration: none;
+}
+
+a[href]:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ace {
+    display: inline-block;
+    height: 1em;
+    width: 1.5em;
+    border-radius: 2px;
+    background-image: linear-gradient(#000 25%, #A4A4A4 25%, #A4A4A4 50%, #FFF 50%, #FFF 75%, #810081 75%, #810081 100%);
+}
+
+* > a > .icon-link {
+    opacity: 0;
+}
+
+*:hover > a > .icon-link {
+    opacity: 1;
+}
+
+.icon-link {
+    margin-left: 0.75rem;
+}
+
+.icon-link::before {
+    content: "#";
+}
+
+.toc {
+    position: fixed;
+    left: 2rem;
+    top: 7rem;
+    font-size: 0.85rem;
+    line-height: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+}
+
+.toc-text {
+    font-weight: 600;
+    margin: 0;
+}
+
+.toc > ol {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.toc-link-active {
+    color: white !important;
+}
+
+@media only screen and (max-width: 1580px) {
+    .toc {
+        position: relative;
+        left: initial;
+        top: initial;
+    }
+}

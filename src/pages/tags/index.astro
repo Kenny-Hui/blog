@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await Astro.glob("../blog/**/*.{md,mdx}");
+const allTags = [];
+for(let post of posts) {
+    for(let tag of post.frontmatter.tags) {
+        if(!allTags.includes(tag)) {
+            allTags.push(tag);
+        }
+    }
+}
+
+---
+<Layout title={"LXBlog - All Tags"}>
+  <h1>All Tags</h1>
+  <p><i>{allTags.length} tags found!</i></p>
+  <ul class="posts">
+    {allTags.map((tag) => {
+        return <li><a href={`/tags/${tag}`}>{tag}</a></li>
+    })}
+  </ul>
+</Layout>
+
+<style>
+    .tags {
+		
+	}
+</style>

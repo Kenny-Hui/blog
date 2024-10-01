@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Constant } from '../constant';
+import PostCard from '../components/PostCard.astro';
+const posts = await Astro.glob("./blog/**/*.md*");
+---
+
+<Layout title={Constant.brand}>
+	<h1>Latest Blog</h1>
+	<ul role="list" class="posts">
+		{posts.sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()).map((post) => {
+			return <PostCard post={post} />
+		})}
+	</ul>
+</Layout>
+
+<style>
+	h1 {
+		font-weight: 700;
+		line-height: 1;
+		margin-bottom: .75em;
+	}
+
+	.posts {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		gap: 1rem;
+	}
+</style>

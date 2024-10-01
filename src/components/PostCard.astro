@@ -1,0 +1,27 @@
+---
+import Card from "./blog/Card.astro";
+import SmallPill from "./Pill.astro";
+
+const { post } = Astro.props;
+
+export function getPostLink(post) {
+	let path = post.file.split("/");
+	path.pop();
+	let parentFolder = path.pop();
+	return "/blog/" + parentFolder;
+}
+---
+
+<Card title={post.frontmatter.title} href={getPostLink(post)} date={post.frontmatter.pubDate.toString().substring(0,10)}>
+	<p>{post.frontmatter.description}</p>
+	<div class="tags">
+		{post.frontmatter.tags.map(tagName => <SmallPill><a class="tag" href={'/tags/' + tagName}>{tagName}</a></SmallPill>)}
+	</div>
+</Card>
+
+<style>
+	.tag {
+		color: var(--text-color);
+		text-decoration: none !important;
+	}
+</style>

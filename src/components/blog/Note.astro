@@ -1,0 +1,27 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="blog-card">
+    <h1>{title}</h1>
+    <slot />
+</div>
+
+<style>
+    h1 {
+        line-height: 1;
+        padding: 0;
+        font-size: 1.5rem;
+    }
+    
+    .blog-card {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: linear-gradient(to bottom right, rgba(135, 0, 255, 0.15), rgba(135, 0, 255, 0));
+        border-radius: 8px;
+        padding: 0 1rem;
+    }
+</style>

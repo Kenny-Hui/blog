@@ -1,0 +1,99 @@
+---
+const { frontmatter } = Astro.props;
+import Nav from "../components/Nav.astro";
+import { getPostLink } from "../components/PostCard.astro";
+import Layout from "./Layout.astro";
+
+const date = new Date(frontmatter.pubDate).getTime();
+const rawPosts = await Astro.glob("../pages/blog/**/*.md*");
+const posts = rawPosts.sort((e, f) => new Date(e.frontmatter.pubDate).getTime() - new Date(f.frontmatter.pubDate).getTime());
+const lastPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() < date).pop();
+const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > date)[0];
+---
+<Layout title={frontmatter.title}>
+	<article>
+		<header>
+			<h1>{frontmatter.title}</h1>
+			<h2 class="description">{frontmatter.description}</h2>
+			<p>{frontmatter.pubDate.toString().substring(0, 10)} &bull; {frontmatter.tags.map(e => <span><a href={"/tags/"+e}>{e}</a> / </span>)}</p>
+			<hr>
+		</header>
+		<div class="content">
+			<slot />
+		</div>
+	</article>
+	<footer>
+		<div>
+			{lastPost && 
+				<Nav>
+					<a href={getPostLink(lastPost)}>← Previously: {lastPost?.frontmatter?.title}</a>
+				</Nav>
+			}
+		</div>
+		<div>
+			{nextPost && 
+				<Nav>
+					<a href={getPostLink(nextPost)}>Next: {nextPost.frontmatter.title} →</a>
+				</Nav>
+			}
+		</div>
+	</footer>
+</Layout>
+
+<style>
+	header {
+		padding: 0.1px;
+		margin-bottom: 0.25rem;
+	}
+
+	footer {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.description {
+		opacity: 0.5;
+		font-size: 1.2rem;
+		font-weight: initial;
+		font-style: italic;
+		line-height: 1;
+	}
+</style>
+
+<script>
+	const HEADING_OFFSET = 200;
+	let rateLimitTimer;
+
+	function findTocInView() {
+		const headings = [...document.querySelectorAll("article > .content > h1,h2")];
+		if(headings.length == 0) return;
+
+		document.querySelectorAll(".toc-link-active").forEach(e => e.classList.remove("toc-link-active"));
+
+		let targetHeadingIdx = headings.indexOf(headings.filter(e => e.getBoundingClientRect().top > HEADING_OFFSET)[0]) - 1;
+		if(targetHeadingIdx == -1) { // Can't find
+			targetHeadingIdx = 0;
+		}
+		if(targetHeadingIdx == -2) {
+			targetHeadingIdx = headings.length - 1;
+		}
+
+		const targetHeading = headings[targetHeadingIdx];
+		const targetHeadingLink = targetHeading.querySelector("a");
+		if(targetHeadingLink == null) return;
+
+		const tocHeading = document.querySelector(`.toc-link[href="#${targetHeadingLink.href.split("#")[1]}"]`)
+		tocHeading.classList.add("toc-link-active");
+	}
+
+	if(document.querySelector(".toc") != null) {
+		window.onscroll = (ev: Event) => {
+			if(rateLimitTimer) clearTimeout(rateLimitTimer);
+			rateLimitTimer = setTimeout(findTocInView, 200);
+		}
+
+		findTocInView();
+	}	
+</script>

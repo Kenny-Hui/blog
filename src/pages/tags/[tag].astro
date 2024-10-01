@@ -1,0 +1,42 @@
+---
+import PostCard from '../../components/PostCard.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const posts = await Astro.glob("../blog/**/*.md*");
+    const allTags = [];
+    for(let post of posts) {
+        for(let tag of post.frontmatter.tags) {
+            if(!allTags.includes(tag)) {
+                allTags.push(tag);
+            }
+        }
+    }
+
+    return allTags.map(tagName => {
+        return { params: { tag: tagName }, props: {posts: posts.filter(e => e.frontmatter.tags.includes(tagName))} }
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<Layout title={`Post tagged with ` + tag}>
+    <h1>Posts tagged with {tag}</h1>
+    <p>{posts.length} posts found • <a href="/tags">View all tags</a></p>
+    <ul class="posts">
+        {posts.map((post) => {
+            return <PostCard {post} />
+        })}
+    </ul>
+</Layout>
+
+<style>
+    .posts {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		gap: 1rem;
+	}
+</style>
