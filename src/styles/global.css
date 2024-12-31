@@ -24,6 +24,7 @@ main {
     color: rgb(var(--text-color));
 }
 h1 {
+    font-size: 1.75rem;
     line-height: 1;
 }
 code {
