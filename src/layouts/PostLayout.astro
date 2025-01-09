@@ -5,7 +5,7 @@ import { getPostLink } from "../components/PostCard.astro";
 import Layout from "./Layout.astro";
 
 const date = new Date(frontmatter.pubDate).getTime();
-const rawPosts = await Astro.glob("../pages/blog/**/*.md*");
+const rawPosts = Object.values(import.meta.glob('../pages/blog/**/*.md*', { eager: true })) as any;
 const posts = rawPosts.sort((e, f) => new Date(e.frontmatter.pubDate).getTime() - new Date(f.frontmatter.pubDate).getTime());
 const lastPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() < date).pop();
 const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > date)[0];
