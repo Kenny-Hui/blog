@@ -2,8 +2,9 @@
 title:  I tried KDE Plasma
 description: It's not what I think it would be
 tags:
+  - tech
   - software
-  - KDE
+  - linux
 pubDate: 2023-03-01
 layout: ../../../layouts/PostLayout.astro
 ---

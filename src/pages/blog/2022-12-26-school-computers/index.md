@@ -1,12 +1,12 @@
 ---
 title: School computers
-description: I love school computers!
+description: I love (messing with) school computers!
 pubDate: 2022-12-26
 # cover-img: /assets/img/path.jpg
 # thumbnail-img: /assets/img/thumb.png
 thumbnail-img: /assets/img/school_pc_thumb.jpg
 tags:
-  - software
+  - tech
   - school
 layout: ../../../layouts/PostLayout.astro
 ---

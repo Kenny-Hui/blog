@@ -2,6 +2,8 @@
 title: I made a class schedule widget
 pubDate: 2023-10-02
 tags:
+  - tech
+  - software
   - school
 layout: ../../../layouts/PostLayout.astro
 ---

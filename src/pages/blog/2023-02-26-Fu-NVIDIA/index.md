@@ -5,10 +5,13 @@ description: I got a new GPU, and NVIDIA does not make me happy.
 # thumbnail-img: /assets/img/school_pc_thumb.jpg
 pubDate: 2023-02-26
 tags:
-  - Linux
+  - tech
+  - linux
   - NVIDIA
 layout: ../../../layouts/PostLayout.astro
 ---
+
+**Update 2025-01-09: NVIDIA has fixed most of the issues since and I have moved on to Arch. It's still not the best experience on Linux, but at least you can use your computer properly. Consider this a relic of the past.**
 
 Ever since I kinda have "my own PC", my hardware is always several generations behind, whether it's CPU or GPU.
 However last Friday I got an NVIDIA GTX 1660 SUPER, which is going to replace my GTX 650 Ti BOOST 1GB (Coincidentally it is released almost exactly 1 decade ago).

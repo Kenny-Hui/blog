@@ -4,6 +4,7 @@ description: ...it shouldn't have hit as hard as it did
 pubDate: 2023-03-29
 tags:
   - school
+  - thoughts
 layout: ../../../layouts/PostLayout.astro
 ---
 It's year-3 and we just had a new English teacher.

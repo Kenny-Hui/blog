@@ -15,7 +15,7 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		<header>
 			<h1>{frontmatter.title}</h1>
 			<h2 class="description">{frontmatter.description}</h2>
-			<p>{frontmatter.pubDate.toString().substring(0, 10)} &bull; {frontmatter.tags.map(e => <span><a href={"/tags/"+e}>{e}</a> / </span>)}</p>
+			<p>{frontmatter.pubDate.toString().substring(0, 10)} &bull; {frontmatter.tags.map((e, idx) => <span>{idx == 0 ? "" : ", "}<a href={`/tags/${e}`}>{e}</a></span>)}</p>
 			<hr>
 		</header>
 		<div class="content">
