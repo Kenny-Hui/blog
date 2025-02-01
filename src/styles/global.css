@@ -67,6 +67,12 @@ pre {
     padding: 0.1rem 0.5rem;
 }
 
+a[aria-describedby] {
+    font-weight: 600;
+    margin-right: 4px;
+    text-decoration: underline !important;
+}
+
 li p {
     margin: 0;
 }
