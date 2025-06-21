@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const posts = await Astro.glob("../blog/**/*.{md,mdx}");
+const posts = Object.values(import.meta.glob("../blog/**/*.{md,mdx}", { eager: true })) as any;
 const allTags = [];
 for(let post of posts) {
     for(let tag of post.frontmatter.tags) {

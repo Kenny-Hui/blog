@@ -3,7 +3,7 @@ import PostCard from '../../components/PostCard.astro';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-    const posts = await Astro.glob("../blog/**/*.md*");
+    const posts = Object.values(import.meta.glob("../blog/**/*.md*", { eager: true })) as any;
     const allTags = [];
     for(let post of posts) {
         for(let tag of post.frontmatter.tags) {

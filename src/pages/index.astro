@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Constant } from '../constant';
 import PostCard from '../components/PostCard.astro';
-const posts = await Astro.glob("./blog/**/*.md*");
+const posts = Object.values(import.meta.glob("./blog/**/*.md*", { eager: true })) as any;
 ---
 
 <Layout title={Constant.brand}>

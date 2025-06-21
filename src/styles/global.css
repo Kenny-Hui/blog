@@ -1,7 +1,7 @@
 :root {
     --background: 30, 33, 43;
-    --border-radius: 6px;
-    --border-color: 0, 0, 0, 0.5;
+    --border-radius: 5px;
+    --border-color: 0, 0, 0, 0.6;
     --text-color: 200, 200, 200;
 
 }
@@ -37,8 +37,7 @@ code {
         Bitstream Vera Sans Mono,
         Courier New,
         monospace;
-    border: 1px solid black;
-    padding: 2px;
+    padding: .25rem;
 }
 
 table {
@@ -60,10 +59,18 @@ th, td {
     padding: 0.25rem 0.5rem;
 }
 
-pre {
-    border: 1px solid rgba(var(--border-color));
-    background: rgba(255, 255, 255, 0.05) !important;
+pre, *:not(pre) > code {
+    background: #2d303b !important;
     border-radius: var(--border-radius);
+    border: 1px solid rgba(var(--border-color));
+}
+
+*:not(pre) > code {
+    white-space: nowrap;
+}
+
+pre {
+    
     padding: 0.1rem 0.5rem;
 }
 
@@ -132,8 +139,9 @@ figcaption {
     top: 7rem;
     font-size: 0.85rem;
     line-height: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.05));
     border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0.75rem;
 }
 
