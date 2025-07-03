@@ -1,0 +1,130 @@
+html {
+    font-family: "National Park", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    background: repeating-linear-gradient(-60deg, var(--background), var(--background) 240px, var(--background-secondary) 240px, var(--background-secondary) 360px);
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 50em;
+    max-width: 100%;
+    margin: auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h1,h2,h3 {
+    font-weight: var(--title-font-weight);
+}
+
+h1,h2,h3,hr,h5,h6 {
+    line-height: 1;
+}
+
+main {
+    & code {
+        font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
+        padding: .2rem;
+    }
+
+    & img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--border-color);
+        background: var(--background);
+        border-radius: var(--border-radius-md);
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figcaption {
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--text-color);
+    }
+}
+
+table {
+    background-color: var(--background);
+    border-radius: var(--border-radius-md);
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+
+    & tr:nth-child(2n+1) {
+        background: var(--background-secondary);
+    }
+
+    & th {
+        text-align: left;
+    }
+
+    & th, td {
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Code block & Inline code block */
+pre, *:not(pre) > code {
+    background: var(--background-secondary) !important;
+    border-radius: var(--border-radius-md);
+    font-size: 0.9rem;
+}
+
+/* In-line code block only */
+*:not(pre) > code {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+pre {
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+a[aria-describedby] {
+    font-weight: 600;
+    margin-right: 4px;
+    text-decoration: underline !important;
+}
+
+li p {
+    margin: 0;
+}
+
+a[href] {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+main a[href] {
+    text-decoration: underline;
+}
+
+.icon-link {
+    margin-left: 0.75rem;
+    opacity: 0;
+}
+
+.icon-link::before {
+    content: "#";
+}
+
+*:hover > a > .icon-link {
+    opacity: 1;
+}

@@ -11,6 +11,12 @@ export default defineConfig({
   integrations: [mdx()],
   site: "https://blog.lx862.com",
   markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      }
+    },
     rehypePlugins: [
       rehypeSlug,
       rehypeFigure, [rehypeAutolinkHeadings, {behavior: 'append'}],

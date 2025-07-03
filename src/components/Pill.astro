@@ -1,19 +1,29 @@
-<div class="pill">
+---
+interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a class="pill" href={href}>
 	<slot />
-</div>
+</a>
 
 <style is:global>
-	.pill {
+	.pill[href] {
 		position: relative;
 		display: inline-block;
-		border: 1px solid rgba(255, 255, 255, 0.5);
-		border-radius: 500px;
-		margin-top: 0.5rem;
-		padding: 0.05rem 0.75rem;
-		z-index: 1;
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-lg);
+		transition: 0.2s background-color;
+		background-color: var(--container-background);
+		padding: 0 0.75rem;
+		color: var(--text-color);
+		text-decoration: none;
 	}
 
 	.pill:hover {
-		background: linear-gradient(to right, rgba(148, 67, 255, 0.35), rgba(0, 0, 0, 0));
+		background-color: var(--main-amber);
 	}
 </style>

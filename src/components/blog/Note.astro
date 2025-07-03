@@ -7,21 +7,22 @@ const { title } = Astro.props;
 ---
 
 <div class="blog-card">
-    <h1>{title}</h1>
+    <h1 class="title">{title}</h1>
     <slot />
 </div>
 
 <style>
-    h1 {
+    .blog-card {
+        font-size: 0.9rem;
+        background: linear-gradient(to bottom right, rgba(135, 0, 255, 0.15), rgba(135, 0, 255, 0));
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        padding: 0 1rem;
+    }
+
+    .title {
         line-height: 1;
         padding: 0;
-        font-size: 1.5rem;
-    }
-    
-    .blog-card {
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        background: linear-gradient(to bottom right, rgba(135, 0, 255, 0.15), rgba(135, 0, 255, 0));
-        border-radius: 8px;
-        padding: 0 1rem;
+        font-size: 1.25rem;
     }
 </style>

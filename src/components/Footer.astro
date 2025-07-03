@@ -1,8 +1,8 @@
 ---
 import Nav from "./Nav.astro";
+import { Constant } from "../constant";
 ---
 
-<hr>
 <div class="footer">
 	<div class="license">
 			<a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" title="Content licensed under CC BY-NC 4.0" aria-label="Content licensed under CC BY-NC 4.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
@@ -10,14 +10,14 @@ import Nav from "./Nav.astro";
 			<img style="height:28px;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">
 			<img style="height:28px;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a>
 	</div>
+	<div class="last-updated">
+		<p class="tag-af">{Constant.author} {new Date().getFullYear()} &lt;3</p>
+	</div>
 	<Nav>
 		<a href="https://wetdry.world/@lx862"><img class="footer-icon" title="Mastodon" alt="Mastodon" src="/assets/images/mastodon.svg"></a>
 		<a href="/feed/feed.xml"><img class="footer-icon" title="RSS Feeds" alt="RSS Feeds" src="/assets/images/blobcatrss.png"></a>
-		<a href="mailto:lx86@lx862.com"><img class="footer-icon" title="Email" alt="Email" src="/assets/images/blobfoxnommail.svg"></a>
+		<a href="mailto:amberfrost@lx862.com"><img class="footer-icon" title="Email" alt="Email" src="/assets/images/blobfoxnommail.svg"></a>
 	</Nav>
-	<div class="last-updated">
-		<p>LX86 {new Date().getFullYear()}</p>
-	</div>
 </div>
 
 <style>
@@ -26,11 +26,11 @@ import Nav from "./Nav.astro";
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		color: rgb(var(--text-color));
+		margin: 1rem 0;
 	}
 
 	.footer-icon {
 		vertical-align: middle;
-		height: 2rem;
+		height: 1.5rem;
 	}
 </style>

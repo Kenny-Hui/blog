@@ -10,8 +10,8 @@ const { href, title, date } = Astro.props;
 
 <li class="link-card">
 	<div>
-		<a href={href}>{title}</a> <span class="date">{date}</span>
-		<p>
+		<a class="header" href={href}>{title}</a> <span class="date">{date}</span>
+		<p class="description">
 			<slot />
 		</p>
 	</div>
@@ -21,8 +21,8 @@ const { href, title, date } = Astro.props;
 		list-style: none;
 		display: flex;
 		padding: 0.5rem 0.75rem;
-		background: linear-gradient(to top, rgba(255,255,255,0.01), rgba(255,255,255,0.025));
-		border-radius: 10px;
+		background: var(--post-header-color);
+		border-radius: var(--border-radius-lg);
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		/* transition: 0.4s margin cubic-bezier(0, 0.55, 0.45, 1); */
 	}
@@ -31,20 +31,20 @@ const { href, title, date } = Astro.props;
 		margin: 0 -2rem;
 	} */
 
-	div > a {
+	.header {
 		font-size: 1.25rem;
-		font-weight: 600;
+		font-weight: var(--title-font-weight);
+	}
+	
+	.description {
+		margin-top: 0.5rem;
+		margin-bottom: 0;
 	}
 	
 	h2 {
 		margin: 0;
 		font-size: 1.25rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
 	}
 
 	.date {

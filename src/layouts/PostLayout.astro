@@ -16,7 +16,6 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 			<h1>{frontmatter.title}</h1>
 			<h2 class="description">{frontmatter.description}</h2>
 			<p>{frontmatter.pubDate.toString().substring(0, 10)} &bull; {frontmatter.tags.map((e, idx) => <span>{idx == 0 ? "" : ", "}<a href={`/tags/${e}`}>{e}</a></span>)}</p>
-			<hr>
 		</header>
 		<div class="content">
 			<slot />
@@ -26,14 +25,14 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		<div>
 			{lastPost && 
 				<Nav>
-					<a href={getPostLink(lastPost)}>← Previously: {lastPost?.frontmatter?.title}</a>
+					<a class="post-nav prev" href={getPostLink(lastPost)}>Previously: {lastPost?.frontmatter?.title}</a>
 				</Nav>
 			}
 		</div>
 		<div>
 			{nextPost && 
 				<Nav>
-					<a href={getPostLink(nextPost)}>Next: {nextPost.frontmatter.title} →</a>
+					<a class="post-nav next" href={getPostLink(nextPost)}>Next: {nextPost.frontmatter.title}</a>
 				</Nav>
 			}
 		</div>
@@ -42,8 +41,18 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 
 <style>
 	header {
-		padding: 0.1px;
+		display: block;
+		padding: 0.75rem 0.5rem;
+		margin: 0;
 		margin-bottom: 0.25rem;
+		background-color: var(--post-header-color);
+		border-radius: var(--border-radius-md);
+		box-sizing: content-box;
+	}
+
+	header > * {
+		margin: 0;
+		padding: 0.3rem;
 	}
 
 	footer {
@@ -51,6 +60,30 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		justify-content: space-between;
 		gap: 0.5rem;
 		flex-wrap: wrap;
+	}
+
+	.post-nav.prev::before {
+		position: relative;
+		display: inline-block;
+		transition: transform 0.2s;
+		content: "←";
+		margin: 0 0.25rem;
+	}
+
+	.post-nav.prev:hover::before {
+		transform: translateX(-35%);
+	}
+
+	.post-nav.next::after {
+		display: inline-block;
+		transition: transform 0.2s;
+		position: relative;
+		content: "→";
+		margin: 0 0.25rem;
+	}
+
+	.post-nav.next:hover::after {
+		transform: translateX(35%);
 	}
 
 	.description {
