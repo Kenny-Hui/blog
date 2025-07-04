@@ -1,6 +1,5 @@
 @import url("amberfrost.css");
 @import url("body.css");
-@import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
 
 :root {
     color-scheme: light dark;
@@ -16,10 +15,10 @@
     --container-background: light-dark(rgb(250, 250, 250), rgb(40, 30, 50));
     --border-color: light-dark(rgb(26, 26, 26), rgb(180, 180, 180));
     --text-color: light-dark(rgb(26, 26, 26), rgb(220, 220, 220));
-    --main-purple: light-dark(rgb(238, 153, 255), rgb(238, 153, 255));
-    --main-amber: light-dark(rgb(250, 218, 0), rgb(156, 115, 0));
+    --main-purple: light-dark(rgb(252, 178, 255), rgb(144, 50, 163));
+    --main-amber: light-dark(rgb(250, 204, 0), rgb(134, 88, 1));
     --link-color: light-dark(rgb(168, 63, 175), rgb(223, 109, 238));
-    --post-header-color: light-dark(rgb(215, 230, 255), rgb(46, 55, 73));
+    --post-header-color: light-dark(rgb(215, 230, 255), rgb(37, 45, 61));
 }
 
 @media (prefers-color-scheme: dark) {
