@@ -2,6 +2,7 @@
 const { frontmatter } = Astro.props;
 import Nav from "../components/Nav.astro";
 import { getPostLink } from "../components/PostCard.astro";
+import { Constant } from "../constant";
 import Layout from "./Layout.astro";
 
 const date = new Date(frontmatter.pubDate).getTime();
@@ -10,7 +11,7 @@ const posts = rawPosts.sort((e, f) => new Date(e.frontmatter.pubDate).getTime() 
 const lastPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() < date).pop();
 const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > date)[0];
 ---
-<Layout title={frontmatter.title}>
+<Layout title={`${frontmatter.title} - ${Constant.brand}`} description={frontmatter.description ?? `A post on ${new Date(date).toISOString().split("T")[0]}`}>
 	<article>
 		<header>
 			<h1>{frontmatter.title}</h1>
@@ -24,16 +25,12 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 	<footer>
 		<div>
 			{lastPost && 
-				<Nav>
-					<a class="post-nav prev" href={getPostLink(lastPost)}>Previously: {lastPost?.frontmatter?.title}</a>
-				</Nav>
+				<a class="post-nav prev" href={getPostLink(lastPost)}>Previously: {lastPost?.frontmatter?.title}</a>
 			}
 		</div>
 		<div>
 			{nextPost && 
-				<Nav>
-					<a class="post-nav next" href={getPostLink(nextPost)}>Next: {nextPost.frontmatter.title}</a>
-				</Nav>
+				<a class="post-nav next" href={getPostLink(nextPost)}>Next: {nextPost.frontmatter.title}</a>
 			}
 		</div>
 	</footer>
@@ -60,6 +57,7 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		justify-content: space-between;
 		gap: 0.5rem;
 		flex-wrap: wrap;
+		margin: 1.5rem 0;
 	}
 
 	.post-nav.prev::before {
@@ -70,10 +68,6 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		margin: 0 0.25rem;
 	}
 
-	.post-nav.prev:hover::before {
-		transform: translateX(-35%);
-	}
-
 	.post-nav.next::after {
 		display: inline-block;
 		transition: transform 0.2s;
@@ -82,16 +76,27 @@ const nextPost = posts.filter(e => new Date(e.frontmatter.pubDate).getTime() > d
 		margin: 0 0.25rem;
 	}
 
-	.post-nav.next:hover::after {
-		transform: translateX(35%);
-	}
-
 	.description {
 		opacity: 0.5;
 		font-size: 1.2rem;
 		font-weight: initial;
 		font-style: italic;
 		line-height: 1;
+	}
+
+	.post-nav {
+		border: 2px solid var(--border-color);
+		padding: 0.6rem;
+		margin: 0.5rem 0;
+		border-radius: var(--border-radius-lg);
+		box-shadow: 2px 3px 0 var(--border-color);
+		color: var(--text-color);
+		text-decoration: none;
+		transition: box-shadow 0.25s;
+	}
+
+	.post-nav:hover {
+		box-shadow: none;
 	}
 </style>
 

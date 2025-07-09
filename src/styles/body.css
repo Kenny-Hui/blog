@@ -88,7 +88,7 @@ pre, *:not(pre) > code {
 
 /* In-line code block only */
 *:not(pre) > code {
-    white-space: nowrap;
+    word-wrap: break-word;
     font-weight: 600;
 }
 

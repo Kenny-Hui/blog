@@ -5,7 +5,7 @@ import PostCard from '../components/PostCard.astro';
 const posts = Object.values(import.meta.glob("./blog/**/*.md*", { eager: true })) as any;
 ---
 
-<Layout title={Constant.brand}>
+<Layout title={Constant.brand} description={Constant.description}>
 	<h1>Amber's Blog Posts</h1>
 	<ul role="list" class="posts">
 		{posts.sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()).map((post) => {
